@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KKI Logistics Services</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }   
+
+        body {
+            background-color: #1E1E1E;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Button Styles */
+        .btn {
+            background-color: #FF9800;
+            color: #000;
+            padding: 10px 25px;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Header Section */
+        header {
+            background-color: rgba(18, 18, 18, 0.9);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            color: #FF9800;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: url("assets/transport one.jpg");
+            background-size: cover;
+            background-position: center;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 32px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: #2A2A2A;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card img {
+            background-image: url("assets/transport\ two.jpg");
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            min-height: 400px;
+        }
+
+        .service-content {
+            padding: 20px;
+        }
+
+        .service-content h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .service-content p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        /* Order Placing Section */
+        .order-section {
+            padding: 80px 0;
+            background-color: #2A2A2A;
+        }
+
+        .order-container {
+            display: flex;
+            gap: 50px;
+        }
+
+        .order-image {
+            flex: 1;
+            background-image: url("assets/transpotrt\ three.jpg");
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            min-height: 400px;
+        }
+
+        .order-form {
+            flex: 1;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            background-color: #1E1E1E;
+            border: 1px solid #444;
+            border-radius: 4px;
+            color: #fff;
+        }
+
+        .range-slider {
+            width: 100%;
+            height: 6px;
+            background-color: #1E1E1E;
+            border-radius: 3px;
+            appearance: none;
+            outline: none;
+        }
+
+        .range-slider::-webkit-slider-thumb {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            background-color: #FF9800;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        /* Tracking Section */
+        .tracking-section {
+            padding: 80px 0;
+        }
+
+        .tracking-container {
+            background-color: #2A2A2A;
+            border-radius: 8px;
+            padding: 30px;
+        }
+
+        .tracking-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .tracking-header h2 {
+            font-size: 26px;
+        }
+
+        .tracking-search {
+            display: flex;
+            margin-bottom: 30px;
+        }
+
+        .tracking-search input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #444;
+            background-color: #1E1E1E;
+            border-radius: 4px 0 0 4px;
+            color: #fff;
+        }
+
+        .tracking-search button {
+            padding: 12px 20px;
+            background-color: #FF9800;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .map-container {
+            height: 400px;
+            background-color: #1E1E1E;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-image {
+            background-image:url("assets/map.jpg");
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-size:cover;
+            background-position: cover;
+            border-radius: 8px;
+            min-height: 400px;
+        }
+
+        .tracking-details {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .tracking-detail-card {
+            background-color: #1E1E1E;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .tracking-detail-card h4 {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #ccc;
+        }
+
+        .tracking-detail-card p {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Arrival Section */
+        .arrival-section {
+            padding: 80px 0;
+            background-color: #2A2A2A;
+        }
+
+        .arrival-container {
+            display: flex;
+            gap: 50px;
+        }
+
+        .arrival-content {
+            flex: 1;
+        }
+
+        .arrival-content h2 {
+            font-size: 32px;
+            margin-bottom: 25px;
+        }
+
+        .arrival-content p {
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .arrival-steps {
+            margin: 30px 0;
+        }
+
+        .arrival-step {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: #FF9800;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            margin-right: 15px;
+            color: #000;
+        }
+
+        .step-content h4 {
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .step-content p {
+            color: #ccc;
+            line-height: 1.5;
+        }
+
+        .arrival-image {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .arrival-image img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #121212;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: #FF9800;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .footer-col ul li a:hover {
+            color: #FF9800;
+        }
+
+        .subscribe-form {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .subscribe-form input {
+            flex: 1;
+            padding: 12px;
+            background-color: #1E1E1E;
+            border: 1px solid #444;
+            border-radius: 4px 0 0 4px;
+            color: #fff;
+        }
+
+        .subscribe-form button {
+            padding: 0 15px;
+            background-color: #FF9800;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            color: #000;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #666;
+        }
+
+        /* Star Rating */
+        .rating {
+            display: flex;
+            margin: 15px 0;
+        }
+
+        .rating i {
+            color: #FF9800;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <div class="logo">KABUKI AGRICULTURE LOGISTICS(KKI)</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#order">Order</a></li>
+                    <li><a href="#tracking">Tracking</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="login.html">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section (KKI Homepage) -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Fast, Reliable Logistics Solutions</h1>
+                <p>We provide top-quality logistics services with real-time tracking and guaranteed on-time delivery to help your business thrive.</p>
+                <a href="#order" class="btn">Place Order Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="assets/transport two.jpg" alt="Freight Services">
+                    <div class="service-content">
+                        <h3>Freight Services</h3>
+                        <p>Comprehensive freight solutions for businesses of all sizes. We handle everything from small packages to large cargo.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="assets/warehousing.jpg" alt="Warehousing">
+                    <div class="service-content">
+                        <h3>Warehousing</h3>
+                        <p>Secure storage facilities with inventory management systems to keep your products safe and organized.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <img src="assets/website wallpaper template.jpg" alt="Express Delivery">
+                    <div class="service-content">
+                        <h3>Express Delivery</h3>
+                        <p>Urgent delivery services with guaranteed delivery times for time-sensitive shipments.</p>
+                        <a href="#" class="btn">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Placing Section -->
+    <section id="order" class="order-section">
+        <div class="container">
+            <h2 class="section-title">Place Your Order</h2>
+       
+            
+            <div class="order-container">
+                <div class="order-image"></div>
+                <div class="order-form">
+                  
+
+                        <div class="form-group">
+                        <label for="weight"> Enter the agric product you want  </label>
+                        <input type="text"  class="form-control" placeholder="Enter the agric product you want">
+   
+                        
+                        <div class="form-group">
+                        <label for="shipment-type">Shipment Type</label>
+                        <select id="shipment-type" class="form-control">
+                            <option value="standard">Standard Delivery</option>
+                            <option value="express">Express Delivery</option>
+                            <option value="same-day">Same Day Delivery</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="weight">Package Weight (kg)</label>
+                        <input type="range" id="weight" class="range-slider" min="1" max="500" value="10">
+                        <div id="weight-value" style="text-align: right; margin-top: 5px;">10 kg</div>
+                    </div> <div class="form-group">
+                        <label for="weight">Package Weight (kg)</label>
+                        <input type="range" id="weight" class="range-slider" min="1" max="500" value="10">
+                        <div id="weight-value" style="text-align: right; margin-top: 5px;">10 kg</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="distance">Delivery Distance (km)</label>
+                        <input type="range" id="distance" class="range-slider" min="1" max="1000" value="100">
+                        <div id="distance-value" style="text-align: right; margin-top: 5px;">100 km +</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="pickup-address">Pickup Address</label>
+                        <input type="text" id="pickup-address" class="form-control" placeholder="Enter full pickup address">
+                    </div>
+                    <div class="form-group">
+                        <label for="delivery-address">Delivery Address</label>
+                        <input type="text" id="delivery-address" class="form-control" placeholder="Enter full delivery address">
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Calculate & Order</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Tracking Section -->
+    <section id="tracking" class="tracking-section">
+        <div class="container">
+            <div class="tracking-container">
+                <div class="tracking-header">
+                    <h2>Live Tracking of Goods</h2>
+                    <a href="#" class="btn">View History</a>
+                </div>
+                <div class="tracking-search">
+                    <input type="text" placeholder="Enter your tracking number">
+                    <button>Track</button>
+                </div>
+                <div class="map-container">
+                    <img src="assets/map.jpg" alt="Tracking Map" class="map-image">
+                </div>
+                <div class="tracking-details">
+                    <div class="tracking-detail-card">
+                        <h4>Current Location</h4>
+                        <p>sunyani,fiapre</p>
+                    </div>
+                    <div class="tracking-detail-card">
+                        <h4>Status</h4>
+                        <p>In Transit</p>
+                    </div>
+                    <div class="tracking-detail-card">
+                        <h4>Estimated Arrival</h4>
+                        <p>Mar 22, 2025 - 14:30</p>
+                    </div>
+                    <div class="tracking-detail-card">
+                        <h4>Distance Covered</h4>
+                        <p>234 km</p>
+                    </div>
+                    <div class="tracking-detail-card">
+                        <h4>Distance Remaining</h4>
+                        <p>120 km</p>
+                    </div>
+                    <div class="tracking-detail-card">
+                        <h4>Current Speed</h4>
+                        <p>65 km/h</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promting of Arrival Section -->
+    <section id="arrival" class="arrival-section">
+        <div class="container">
+            <div class="arrival-container">
+                <div class="arrival-content">
+                    <h2>Prompting of Arrival</h2>
+                    <p>Our advanced notification system ensures that you and your customers are always informed about shipment status and estimated arrival times.</p>
+                    <div class="arrival-steps">
+                        <div class="arrival-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Instant Notifications</h4>
+                                <p>Receive real-time alerts via SMS, email or app notifications about your shipment status.</p>
+                            </div>
+                        </div>
+                        <div class="arrival-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Precise ETA Updates</h4>
+                                <p>Our system continuously calculates and updates arrival times based on traffic and weather conditions.</p>
+                            </div>
+                        </div>
+                        <div class="arrival-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Delivery Confirmation</h4>
+                                <p>Get immediate confirmation when your package has been successfully delivered.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="btn">Learn More</a>
+                </div>
+                <div class="arrival-image">
+                    <img src="assets/notification on delivery.jpg"  alt="notification on delivery">
+                    <img src="assets/person to person delivery.jpg" alt="Delivery Person">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>About KKI</h3>
+                    <p>KKI Logistics provides professional logistics services with a focus on reliability, speed, and customer satisfaction.</p>
+                    <div class="rating">
+                        <i>★</i>
+                        <i>★</i>
+                        <i>★</i>
+                        <i>★</i>
+                        <i>★</i>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#order">Order Now</a></li>
+                        <li><a href="#tracking">Track Shipment</a></li>
+                        <li><a href="#arrival">Arrival Notifications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>123 Logistics Avenue, SY</li>
+                        <li>Phone: +233204110702</li>
+                        <li>Email: info@kkilogistics.com</li>
+                        <li>Working Hours: 24/7</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Subscribe to our newsletter for the latest updates and offers.</p>
+                    <div class="subscribe-form">
+                        <input type="email" placeholder="Your email address">
+                        <button>→</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 KKI Logistics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script for the range sliders
+        const weightSlider = document.getElementById('weight');
+        const weightValue = document.getElementById('weight-value');
+        weightSlider.addEventListener('input', function() {
+            weightValue.textContent = this.value + ' kg';
+        });
+
+        const distanceSlider = document.getElementById('distance');
+        const distanceValue = document.getElementById('distance-value');
+        distanceSlider.addEventListener('input', function() {
+            distanceValue.textContent = this.value + ' km';
+        });
+    </script>
+</body>
+</html>
